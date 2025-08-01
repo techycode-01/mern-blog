@@ -4,18 +4,6 @@ A full-stack blog platform built with the MERN stack (MongoDB, Express, React, N
 
 ---
 
-## Table of Contents
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Project Structure](#project-structure)
-- [API Endpoints](#api-endpoints)
-- [Main Components](#main-components)
-- [Getting Started](#getting-started)
-- [Deployment](#deployment)
-- [Contributing](#contributing)
-- [Security](#security)
-- [License](#license)
-- [Credits](#credits)
 
 ## Features
 - User authentication (Sign Up, Sign In, OAuth)
@@ -217,8 +205,8 @@ This project is licensed under the ISC License.
 
 ## Credits
 - Inspired by modern blog platforms
-- Built by [Your Name] and contributors
+- Built by Anuj and contributors
 - Uses open source libraries and tools
 
 ---
-Feel free to customize this README for your own project needs!
+
