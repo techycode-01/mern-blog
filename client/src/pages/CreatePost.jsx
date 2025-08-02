@@ -26,15 +26,15 @@ export default function CreatePost() {
       setImageUploadProgress(0);
       
       // Cloudinary upload
-      const formData = new FormData();
-      formData.append('file', file);
-      formData.append('upload_preset', 'techycode'); // Your upload preset
+      const cloudinaryFormData = new FormData();
+      cloudinaryFormData.append('file', file);
+      cloudinaryFormData.append('upload_preset', 'techycode'); // Your upload preset
       
       const response = await fetch(
         `https://api.cloudinary.com/v1_1/dutqipsv8/image/upload`, // Your cloud name
         {
           method: 'POST',
-          body: formData,
+          body: cloudinaryFormData,
         }
       );
       
@@ -63,6 +63,7 @@ export default function CreatePost() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
+        credentials: 'include',
       });
       const data = await res.json();
       if (!res.ok) {
