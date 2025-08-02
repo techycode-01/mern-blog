@@ -1,13 +1,6 @@
 import { Alert, Button, FileInput, Select, TextInput } from 'flowbite-react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import {
-  getDownloadURL,
-  getStorage,
-  ref,
-  uploadBytesResumable,
-} from 'firebase/storage';
-import { app } from '../firebase';
 import { useEffect, useState } from 'react';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
@@ -53,30 +46,33 @@ export default function UpdatePost() {
         setImageUploadError('Please select an image');
         return;
       }
+      
       setImageUploadError(null);
-      const storage = getStorage(app);
-      const fileName = new Date().getTime() + '-' + file.name;
-      const storageRef = ref(storage, fileName);
-      const uploadTask = uploadBytesResumable(storageRef, file);
-      uploadTask.on(
-        'state_changed',
-        (snapshot) => {
-          const progress =
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          setImageUploadProgress(progress.toFixed(0));
-        },
-        (error) => {
-          setImageUploadError('Image upload failed');
-          setImageUploadProgress(null);
-        },
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            setImageUploadProgress(null);
-            setImageUploadError(null);
-            setFormData({ ...formData, image: downloadURL });
-          });
+      setImageUploadProgress(0);
+      
+      // Cloudinary upload
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('upload_preset', 'techycode'); // Your upload preset
+      
+      const response = await fetch(
+        `https://api.cloudinary.com/v1_1/dutqipsv8/image/upload`, // Your cloud name
+        {
+          method: 'POST',
+          body: formData,
         }
       );
+      
+      if (!response.ok) {
+        throw new Error('Upload failed');
+      }
+      
+      const data = await response.json();
+      
+      setImageUploadProgress(null);
+      setImageUploadError(null);
+      setFormData({ ...formData, image: data.secure_url });
+      
     } catch (error) {
       setImageUploadError('Image upload failed');
       setImageUploadProgress(null);
