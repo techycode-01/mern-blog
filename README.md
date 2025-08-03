@@ -92,7 +92,6 @@ mern-blog/
 │   │   │   │   └── themeSlice.js
 │   │   │   └── user/
 │   │   │       └── userSlice.js
-│   │   ├── firebase.js         # Firebase config
 │   │   ├── main.jsx            # React entry point
 │   │   └── index.css           # Global styles
 │   ├── index.html              # HTML template
