@@ -75,6 +75,7 @@ mern-blog/
 │   │   │   ├── PrivateRoute.jsx
 │   │   │   ├── ScrollToTop.jsx
 │   │   │   └── ThemeProvider.jsx
+│   │   ├── firebase.js         # Firebase configuration
 │   │   ├── pages/              # Main pages
 │   │   │   ├── About.jsx
 │   │   │   ├── CreatePost.jsx
@@ -251,4 +252,3 @@ This project is licensed under the ISC License - see the [LICENSE](LICENSE) file
   - [Tailwind CSS](https://tailwindcss.com/)
   - [Redux Toolkit](https://redux-toolkit.js.org/)
   - [Cloudinary](https://cloudinary.com/)
-
