@@ -50,10 +50,10 @@ export default function DashProfile() {
       // Cloudinary upload
       const cloudinaryFormData = new FormData();
       cloudinaryFormData.append('file', imageFile);
-      cloudinaryFormData.append('upload_preset', 'techycode'); // Your upload preset
+      cloudinaryFormData.append('upload_preset', import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET);
       
       const response = await fetch(
-        `https://api.cloudinary.com/v1_1/dutqipsv8/image/upload`, // Your cloud name
+        `https://api.cloudinary.com/v1_1/${import.meta.env.VITE_CLOUDINARY_CLOUD_NAME}/image/upload`,
         {
           method: 'POST',
           body: cloudinaryFormData,

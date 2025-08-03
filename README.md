@@ -179,7 +179,7 @@ mern-blog/
    JWT_SECRET=your_jwt_secret
    ```
 
-5. (Optional) Set up Cloudinary for image uploads in `client/.env`:
+5. Set up Cloudinary for image uploads in `client/.env`:
    ```env
    VITE_CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
    VITE_CLOUDINARY_UPLOAD_PRESET=your_cloudinary_upload_preset
